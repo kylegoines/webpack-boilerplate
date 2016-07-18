@@ -1,8 +1,20 @@
 module.exports = {
 	entry: './src/app.js',
 	output: {
-		path: "src/build",
+		path: "src/assets/build",
     	filename: "bundle.js"
 	},
-	watch: true
+	watch: true,
+	module: {
+		loaders: [
+			{
+				test: /\.js$/,
+				exclude: /(node_modules|bower_components)/,
+				loader: 'babel',
+				query: {
+					presets: ['es2015', 'react']
+			  }
+			}
+		]
+	}
 }
